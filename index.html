@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JBL Wave Flex - Trendyol</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      color: #222;
+    }
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      overflow: hidden;
+      position: relative;
+      z-index: 1;
+    }
+    .navbar {
+      width: 100%;
+      background: #fff;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 1px 5px rgba(0,0,0,0.05);
+    }
+    .navbar img {
+      height: 40px;
+    }
+    .navbar input {
+      flex: 1;
+      max-width: 350px;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+      margin: 0 20px;
+    }
+    .navbar .links a {
+      margin-left: 15px;
+      color: #222;
+      text-decoration: none;
+      font-size: 14px;
+    }
+    .product {
+      display: flex;
+      flex-direction: row;
+      gap: 30px;
+      padding: 30px;
+    }
+    .product img {
+      max-width: 300px;
+      border-radius: 10px;
+    }
+    .details {
+      flex: 1;
+    }
+    .title {
+      font-size: 22px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .stars {
+      color: #fdd835;
+      font-size: 16px;
+    }
+    .price {
+      margin: 15px 0;
+    }
+    .old-price {
+      text-decoration: line-through;
+      color: #888;
+      font-size: 18px;
+      margin-right: 10px;
+    }
+    .discounted-price {
+      font-size: 26px;
+      color: #f27a1a;
+      font-weight: bold;
+    }
+    .discount-badge {
+      background-color: #d32f2f;
+      color: white;
+      font-size: 14px;
+      padding: 4px 8px;
+      border-radius: 5px;
+      margin-left: 10px;
+    }
+    .buttons {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+    }
+    .btn {
+      padding: 12px 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+    }
+    .primary {
+      background-color: #f27a1a;
+      color: white;
+    }
+    .secondary {
+      background-color: #eee;
+      color: #222;
+    }
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0, 0, 0, 0.95);
+      color: #fff;
+      font-family: monospace;
+      z-index: 999;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    .overlay h2 {
+      margin-bottom: 20px;
+    }
+    .overlay pre {
+      background: #111;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 600px;
+      margin: auto;
+      text-align: left;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+
+<div class="navbar">
+  <img src="data:image/png;base64,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" alt="Trendyol Logo">
+  <input type="text" placeholder="Ürün, kategori veya marka ara">
+  <div class="links">
+    <a href="#"><i class="fas fa-th-large"></i> Kategoriler</a>
+    <a href="#"><i class="fas fa-heart"></i> Favorilerim</a>
+    <a href="#"><i class="fas fa-shopping-cart"></i> Sepetim</a>
+    <a href="#"><i class="fas fa-user"></i> Hesabım</a>
+  </div>
+</div>
+
+<div class="container">
+  <div class="product">
+    <img src="https://cdn.dsmcdn.com/mnresize/1200/1800/ty1368/product/media/images/prod/QC/20240618/12/cef8c8c5-4299-3aa1-9c2d-75dcbb61b564/1_org_zoom.jpg" alt="JBL Wave Flex Kulaklık">
+    <div class="details">
+      <div class="title">JBL Wave Flex Kablosuz Kulakiçi Kulaklık, Siyah</div>
+      <div class="stars">★★★★★  (934 değerlendirme)</div>
+      <div class="price">
+        <span class="old-price">2.499 TL</span>
+        <span class="discounted-price">1.000 TL</span>
+        <span class="discount-badge">%60 İndirim</span>
+      </div>
+      <div class="buttons">
+        <button class="btn primary" onclick="startDemo()">Şimdi Al</button>
+        <button class="btn secondary">Sepete Ekle</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="overlay">
+  <h2>🛡️ Synapse Secure Devrede</h2>
+  <pre id="scanlog"></pre>
+  <p style="margin-top: 20px; color: #ffd;">Bu işlem tamamlanmış olsaydı kişisel verileriniz çalınmış olabilirdi. Synapse Secure sizi korudu.</p>
+</div>
+
+<script>
+  function startDemo() {
+    const overlay = document.getElementById("overlay");
+    const log = document.getElementById("scanlog");
+    overlay.style.display = "block";
+    log.innerHTML = "";
+
+    const steps = [
+      '🔍 Bağlantı analiz ediliyor...\n',
+      '✔️ Alan adı: trendyol-kampanya.shop',
+      '❌ Gerçek domain ile eşleşmiyor',
+      '❌ SSL geçersiz',
+      '❌ WHOIS kaydı: 3 gün önce alınmış',
+      '⚠️ Risk skoru: %93',
+      '‼️ Phishing saldırısı tespit edildi',
+      '✅ Synapse Secure sizi korudu.'
+    ];
+
+    let i = 0;
+    function nextLine() {
+      if (i < steps.length) {
+        log.innerHTML += steps[i] + "\n";
+        i++;
+        setTimeout(nextLine, 600);
+      }
+    }
+    nextLine();
+  }
+</script>
+
+</body>
+</html>
