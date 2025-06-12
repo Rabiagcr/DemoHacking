@@ -14,6 +14,7 @@
     }
     .container {
       max-width: 800px;
+      width: 95%;
       margin: 40px auto;
       background: #fff;
       border-radius: 10px;
@@ -135,6 +136,22 @@
       margin: auto;
       text-align: left;
       line-height: 1.5;
+    }
+    @media (max-width: 768px) {
+      .product {
+        flex-direction: column;
+        align-items: center;
+      }
+      .product img {
+        max-width: 90%;
+      }
+      .buttons {
+        flex-direction: column;
+        width: 100%;
+      }
+      .btn {
+        width: 100%;
+      }
     }
   </style>
 </head>
